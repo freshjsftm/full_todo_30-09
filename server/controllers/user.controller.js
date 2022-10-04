@@ -2,6 +2,19 @@ const createError = require('http-errors');
 const _ = require('lodash')
 const {User} = require('../models');
 
+module.exports.getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.findAll({
+      attributes:{
+        exclude: ['password']
+      }
+    })
+    res.status(200).send({data:users})
+  } catch (error) {
+    next(error)
+  }
+}
+
 module.exports.createUser = async (req, res, next) => {
   try {
     const {body} = req;

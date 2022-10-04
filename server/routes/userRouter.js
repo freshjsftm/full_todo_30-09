@@ -4,7 +4,7 @@ const { upload } = require('../middleware/upload.mw');
 const userRouter = Router();
 
 userRouter.post('/', upload ,UserController.createUser)
-//userRouter.get('/')
+userRouter.get('/', UserController.getAllUsers)
 //userRouter.get('/:userId')
 //userRouter.patch('/:userId')
 
